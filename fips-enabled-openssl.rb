@@ -10,6 +10,10 @@ class FipsEnabledOpenssl < Formula
 
   depends_on 'openssl-fips-module'
 
+  def patches
+    DATA
+  end
+
   def install
     fips = Formula['openssl-fips-module']
     args = %W[./Configure
@@ -55,7 +59,7 @@ class FipsEnabledOpenssl < Formula
   end
 
   def openssldir
-    etc/"openssl"
+    etc/"fips-enabled-openssl"
   end
 
   def cert_pem
@@ -94,3 +98,33 @@ class FipsEnabledOpenssl < Formula
     end
   end
 end
+
+__END__
+diff --git a/openssl.cnf.old b/openssl.cnf
+index 18760c6..8f5a596 100644
+--- a/openssl.cnf.old
++++ b/openssl.cnf
+@@ -8,9 +8,13 @@
+ HOME			= .
+ RANDFILE		= $ENV::HOME/.rnd
+
++openssl_conf = openssl_init
++
++[ openssl_init ]
+ # Extra OBJECT IDENTIFIER info:
+ #oid_file		= $ENV::HOME/.oid
+ oid_section		= new_oids
++alg_section = algs
+
+ # To use this configuration file with the "-extfile" option of the
+ # "openssl x509" utility, name here the section containing the
+@@ -32,6 +36,9 @@ tsa_policy1 = 1.2.3.4.1
+ tsa_policy2 = 1.2.3.4.5.6
+ tsa_policy3 = 1.2.3.4.5.7
+
++[ algs ]
++fips_mode = yes
++
+ ####################################################################
+ [ ca ]
+ default_ca	= CA_default		# The default ca section
