@@ -5,6 +5,11 @@ class OpensslFipsModule < Formula
   url 'https://www.openssl.org/source/openssl-fips-2.0.5.tar.gz'
   sha256 '9efa2948a812c6529c4e1f70d9b1e76a360b7d8e18c318e3755f360fe0e9237a'
 
+  bottle do
+    root_url 'https://github.com/asynchrony/homebrew-asynchrony/releases/download/bottles'
+    sha1 "f811e0dd97a6f95757649adccd2b190659055c5f" => :mavericks
+  end
+
   keg_only 'This is a dependency for OpenSSL, which is itself keg_only'
 
   def install

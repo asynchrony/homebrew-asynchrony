@@ -5,10 +5,15 @@ class FipsEnabledOpenssl < Formula
   url 'https://www.openssl.org/source/openssl-1.0.1f.tar.gz'
   sha256 '6cc2a80b17d64de6b7bac985745fdaba971d54ffd7d38d3556f998d7c0c9cb5a'
 
+  bottle do
+    root_url 'https://github.com/asynchrony/homebrew-asynchrony/releases/download/bottles'
+    sha1 "9dd4a9828e4698ab35bdb272ba4e15570836a8ed" => :mavericks
+  end
+
   keg_only :provided_by_osx,
     "The OpenSSL provided by OS X is too old for some software, and does not support FIPS mode."
 
-  depends_on 'openssl-fips-module'
+  depends_on 'openssl-fips-module', :build
 
   def patches
     DATA
