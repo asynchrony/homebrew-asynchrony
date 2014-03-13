@@ -13,7 +13,7 @@ class FipsEnabledOpenssl < Formula
   keg_only :provided_by_osx,
     "The OpenSSL provided by OS X is too old for some software, and does not support FIPS mode."
 
-  depends_on 'openssl-fips-module', :build
+  depends_on 'openssl-fips-module' => :build
 
   def patches
     DATA
