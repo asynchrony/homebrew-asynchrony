@@ -34,7 +34,8 @@ class FipsEnabledOpenssl < Formula
         %{"darwin64-x86_64-cc","cc:-arch x86_64 -O3},
         %{"darwin64-x86_64-cc","cc:-arch x86_64 -Os}
 
-      setup_makedepend_shim
+      inreplace "util/domd", %{expr "$MAKEDEPEND" : '.*gcc$' > /dev/null}, %{true}
+      inreplace "util/domd", %{${MAKEDEPEND}}, ENV.cc
     else
       args << "darwin-i386-cc"
     end
@@ -45,16 +46,6 @@ class FipsEnabledOpenssl < Formula
     system "make", "depend" if MacOS.prefer_64_bit?
     system "make"
     system "make", "install", "MANDIR=#{man}", "MANSUFFIX=ssl"
-  end
-
-  def setup_makedepend_shim
-    path = buildpath/"brew/makedepend"
-    path.write <<-EOS.undent
-      #!/bin/sh
-      exec "#{ENV.cc}" -M "$@"
-      EOS
-    path.chmod 0755
-    ENV.prepend_path 'PATH', path.parent
   end
 
   def openssldir
