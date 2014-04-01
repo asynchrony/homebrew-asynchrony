@@ -12,10 +12,10 @@ class FipsEnabledNginx < Formula
 
   head 'http://hg.nginx.org/nginx/', :using => :hg
 
-  bottle do
-    root_url 'https://github.com/asynchrony/homebrew-asynchrony/releases/download/bottles'
-    sha1 "3c9cdedb65e4c3c028fb9c8ca5a92c66e2f1ddf6" => :mavericks
-  end
+  #bottle do
+  #  root_url 'https://github.com/asynchrony/homebrew-asynchrony/releases/download/bottles'
+  #  sha1 "3c9cdedb65e4c3c028fb9c8ca5a92c66e2f1ddf6" => :mavericks
+  #end
 
   env :userpaths
 
