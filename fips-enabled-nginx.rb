@@ -67,7 +67,8 @@ class FipsEnabledNginx < Formula
             "--http-scgi-temp-path=#{var}/run/nginx/scgi_temp",
             "--http-log-path=#{var}/log/nginx/access.log",
             "--error-log-path=#{var}/log/nginx/error.log",
-            "--with-http_gzip_static_module"
+            "--with-http_gzip_static_module",
+            "--with-debug"
           ]
 
     args << passenger_config_args if build.with? "passenger"
