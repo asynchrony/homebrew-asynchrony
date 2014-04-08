@@ -2,12 +2,12 @@ require 'formula'
 
 class FipsEnabledOpenssl < Formula
   homepage 'http://openssl.org'
-  url 'https://www.openssl.org/source/openssl-1.0.1f.tar.gz'
-  sha256 '6cc2a80b17d64de6b7bac985745fdaba971d54ffd7d38d3556f998d7c0c9cb5a'
+  url 'https://www.openssl.org/source/openssl-1.0.1g.tar.gz'
+  sha256 '53cb818c3b90e507a8348f4f5eaedb05d8bfe5358aabb508b7263cc670c3e028'
 
   bottle do
     root_url 'https://github.com/asynchrony/homebrew-asynchrony/releases/download/bottles'
-    sha1 "9dd4a9828e4698ab35bdb272ba4e15570836a8ed" => :mavericks
+    sha1 "e4fe6a4d23721a0709149713d9d19c0ea44ae21b" => :mavericks
   end
 
   keg_only :provided_by_osx,
