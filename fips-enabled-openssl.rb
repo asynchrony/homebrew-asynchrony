@@ -7,7 +7,8 @@ class FipsEnabledOpenssl < Formula
 
   bottle do
     root_url 'https://github.com/asynchrony/homebrew-asynchrony/releases/download/bottles'
-    sha1 "e4fe6a4d23721a0709149713d9d19c0ea44ae21b" => :mavericks
+    revision 1
+    sha1 "20d9346f94b892eea1493b80f02850cd921340b3" => :mavericks
   end
 
   keg_only :provided_by_osx,
